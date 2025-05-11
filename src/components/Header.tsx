@@ -73,22 +73,22 @@ export default function Header() {
   const toggleLang = () => setShowLang(!showLang);
 
   return (
-    <div className="container">
+    <div className="w-full max-w-screen-xl mx-auto px-4">
       {/* Top bar */}
       <div className="hidden sm:flex justify-between items-center bg-gray-100 px-4 py-2 text-sm">
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-2 sm:gap-4">
           <span>{t.location}</span>
           <span className="cursor-pointer">{t.about}</span>
           <span className="cursor-pointer">{t.products}</span>
           <span className="cursor-pointer">{t.contacts}</span>
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="relative flex items-center gap-4">
           <span>{t.phone}</span>
           <span className="cursor-pointer" onClick={toggleLang}>
             {t.language} ⌄
           </span>
           {showLang && (
-            <div className="absolute mt-2 bg-white shadow-md rounded text-sm">
+            <div className="absolute top-full mt-2 right-0 bg-white shadow-md rounded text-sm z-20">
               <div onClick={() => setLang("uz")} className="px-4 py-2 hover:bg-gray-200">Uzbek</div>
               <div onClick={() => setLang("ru")} className="px-4 py-2 hover:bg-gray-200">Русский</div>
               <div onClick={() => setLang("en")} className="px-4 py-2 hover:bg-gray-200">English</div>
@@ -99,20 +99,20 @@ export default function Header() {
 
       {/* Middle header */}
       <div className="w-full bg-white shadow-sm">
-        <div className="flex flex-col items-center gap-2 p-4">
-          <div className="flex w-full items-center justify-between">
+        <div className="flex flex-col items-center gap-2 py-4">
+          <div className="flex w-full items-center justify-between flex-wrap gap-4">
             <h1 className="text-xl text-[#134E9B] font-bold">Ashyo</h1>
-            
-            <div className="flex items-center gap-4 flex-grow justify-center">
+
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 flex-grow sm:justify-center w-full sm:w-auto">
               <div className="relative">
                 <button
                   onClick={toggleCategory}
-                  className="border px-[20px] py-[10px] rounded text-sm bg-[#134E9B] text-white font-semibold"
+                  className="border px-4 py-2 rounded text-sm bg-[#134E9B] text-white font-semibold"
                 >
                   {t.category}
                 </button>
                 {showCategory && (
-                  <div className="absolute mt-2 bg-white shadow-md rounded text-sm z-10">
+                  <div className="absolute mt-2 bg-white shadow-md rounded text-sm z-10 w-40">
                     {isLoading ? (
                       <div className="px-4 py-2 text-gray-500">{t.loading}</div>
                     ) : isError ? (
@@ -128,32 +128,21 @@ export default function Header() {
                 )}
               </div>
 
-              <div className="hidden sm:flex items-center bg-gray-100 px-3 py-1 rounded w-72">
+              <div className="flex items-center bg-gray-100 px-3 py-1 rounded w-full sm:w-72">
                 <input
-                  className="bg-transparent w-full outline-none text-sm py-[10px]"
+                  className="bg-transparent w-full outline-none text-sm py-2"
                   placeholder={t.searchPlaceholder}
                 />
-                <FaSearch className="text-white bg-[#134E9B] px-2 py-2 ] size-10 rounded-[5px]" />
+                <FaSearch className="text-white bg-[#134E9B] p-2 size-10 rounded-[5px]" />
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-[#] text-lg">
-              <div className="px-2 py-2 bg-[#EBEFF3]">
-              <FaBalanceScale className="relative" />
-
-              </div>
-              <div className="px-2 py-2 bg-[#EBEFF3]">
-              <FaHeart className="relative" />
-
-              </div>
-              <div className="px-2 py-2 bg-[#EBEFF3]">
-              <FaEnvelope className="relative" />
-
-              </div>
-              <div className="px-2 py-2 bg-[#EBEFF3]">
-              <FaUserCircle />
-
-              </div>
+            <div className="flex items-center gap-2 sm:gap-4 text-lg">
+              {[FaBalanceScale, FaHeart, FaEnvelope, FaUserCircle].map((Icon, idx) => (
+                <div key={idx} className="p-2 bg-[#EBEFF3] rounded">
+                  <Icon />
+                </div>
+              ))}
             </div>
           </div>
         </div>
