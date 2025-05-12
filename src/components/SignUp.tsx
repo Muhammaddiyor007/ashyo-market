@@ -12,18 +12,18 @@ export default function SignUp({ onSuccess }: SignUpProps) {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await signUp(form);
-      toast.success('Ro‘yxatdan o‘tish muvaffaqiyatli!');
-      onSuccess(); // Modalni yopish
-    } catch (err: any) {
-      toast.error(err.response?.data?.message || 'Xatolik yuz berdi');
-    } finally {
-      setLoading(false);
-    }
-  };
+  e.preventDefault();
+  setLoading(true);
+  try {
+    await signUp(form);
+    toast.success('Ro‘yxatdan o‘tish muvaffaqiyatli!');
+    onSuccess(); // Modalni yopish
+  } catch (err: any) {
+    toast.error(err.response?.data?.message || 'Xatolik yuz berdi');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-xl shadow-md">
