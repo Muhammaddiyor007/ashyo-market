@@ -11,11 +11,13 @@ import { FaRegCommentDots } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <div className="container bg-[#f9f9f9] px-4 md:px-8 py-12">
+    <div className="container px-4 md:px-8 py-12">
       <div className="flex flex-col md:flex-row gap-8 justify-between flex-wrap">
         <div className="flex-1 min-w-[250px]">
-          <h2 className="font-bold mb-2">Bizning ijtimoiy tarmoqlarda</h2>
-          <div className="flex gap-2 flex-wrap mb-4">
+          <h2 className="hidden sm:flex font-bold mb-2">
+            Bizning ijtimoiy tarmoqlarda
+          </h2>
+          <div className="hidden sm:flex gap-2 flex-wrap mb-4">
             <div className="bg-white p-2 rounded">
               <FaFacebookF className="text-[#1877f2]" />
             </div>
@@ -73,7 +75,7 @@ export default function Footer() {
       </div>
 
       <div className="mt-10 text-center md:text-left text-sm text-gray-500">
-        © 2022 Ashyo ro‘hatdan o‘tgan litsenzalangan bu brend.
+        © 2022 Ashyo ro'hatdan o'tgan litsenzalangan bu brend.
       </div>
     </div>
   );
